@@ -1,5 +1,6 @@
 // Import the Express module
 const express = require('express');
+const os = require('os')
 
 // Create an Express application
 const app = express();
@@ -9,8 +10,11 @@ const port = 3000;
 
 // Define a route handler for the default home page
 app.get('/', (req, res) => {
-  res.send('Hello, World!');
+//   res.send('Hello, World!');
+res.json({message: "respone from:", hostname: `${os.hostname}`})
 });
+
+
 
 // Start the server
 app.listen(port, () => {

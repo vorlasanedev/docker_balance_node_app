@@ -1,0 +1,38 @@
+# normal docker
+
+# version: '3.4'
+# services:
+#   dockerbalancenodeapp:
+#     image: dockerbalancenodeapp
+#     build:
+#       context: .
+#       dockerfile: ./Dockerfile
+#     environment:
+#       NODE_ENV: production
+#     ports:
+#       - 3000:3000
+
+# docker loadbalancer
+version: '3.4'
+services:
+  dockerbalancenodeapp:
+    image: dockerbalancenodeapp
+    # container_name: dockerbalancenodeapp
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    # ports:
+    #   - 3000:3000
+
+    # outsie to connect inside using nginx reverse proxy
+  nginx:
+    container_name: nginxproxy
+    image: nginx:latest
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d # Mount custom Nginx configuration file
+    depends_on:
+      - dockerbalancenodeapp  #service name
+    ports:
+      - "3000:3000"  # Map port 3000 on host to port 80 on Nginx container
