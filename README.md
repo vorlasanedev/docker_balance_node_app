@@ -1,6 +1,8 @@
 # docker_balance_node_app
 docker load balance with nginx reverse proxy under docker
 Scale Docker Compose ด้วย Nginx Reverse Proxy พร้อมทำ Load Balancer
+https://www.youtube.com/watch?v=ykwAI_8Pkvw
+
 1. create nodejs
 - initoalize nodejs
 ```
