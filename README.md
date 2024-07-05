@@ -5,6 +5,7 @@ docker load balance with nginx reverse proxy under docker
 - initoalize nodejs
 ```
 npm init -y
+npm install
 ```
 - install express package
 ```
